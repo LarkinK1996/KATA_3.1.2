@@ -2,10 +2,11 @@ package com.example.spring311.service;
 
 
 import com.example.spring311.model.User;
+import org.springframework.security.core.userdetails.UserDetails;
 
 import java.util.List;
 
-public interface UserService {
+public interface AdminService {
 
     void add(User user);
 
@@ -16,5 +17,8 @@ public interface UserService {
     void updateUser(int id, User newUser);
 
     List<User> getAllUsers();
+
+    UserDetails loadUserByLogin(String username);
+
 }
 
