@@ -52,6 +52,6 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     @Override
     public UserDetailsService userDetailsService() {
 
-        return adminService::loadUserByLogin;
+        return adminService::loadUserByUsername;
     }
 }

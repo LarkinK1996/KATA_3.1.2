@@ -18,7 +18,7 @@ public interface AdminService {
 
     List<User> getAllUsers();
 
-    UserDetails loadUserByLogin(String username);
+    UserDetails loadUserByUsername(String username);
 
 }
 

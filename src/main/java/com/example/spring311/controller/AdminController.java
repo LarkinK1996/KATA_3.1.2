@@ -4,7 +4,6 @@ import com.example.spring311.model.User;
 import com.example.spring311.service.AdminService;
 import com.example.spring311.service.RoleService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -21,7 +20,7 @@ import java.util.List;
 
 @Controller
 @RequestMapping()
-@PreAuthorize("hasAuthority('ADMIN')")
+//@PreAuthorize("hasAuthority('ADMIN')")
 public class AdminController {
 
     private final AdminService adminService;
@@ -81,7 +80,7 @@ public class AdminController {
     }
     @GetMapping("/myInfo")
     public String showUserInfo(Principal principal, Model model) {
-        model.addAttribute("user", adminService.loadUserByLogin(principal.getName()));
+        model.addAttribute("user", adminService.loadUserByUsername(principal.getName()));
         return "user";
     }
 }

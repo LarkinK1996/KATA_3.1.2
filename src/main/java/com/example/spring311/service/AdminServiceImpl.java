@@ -1,7 +1,7 @@
 package com.example.spring311.service;
 
+import com.example.spring311.dao.AdminDao;
 import com.example.spring311.model.User;
-import com.example.spring311.repository.AdminRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Service;
@@ -10,47 +10,63 @@ import org.springframework.transaction.annotation.Transactional;
 import java.util.List;
 
 @Service
-@Transactional
 public class AdminServiceImpl implements AdminService {
 
-    private final AdminRepository adminRepository;
+    //private final AdminRepository adminRepository;
+    private final AdminDao adminDao;
 
     @Autowired
-    public AdminServiceImpl(AdminRepository adminRepository) {
-        this.adminRepository = adminRepository;
+    public AdminServiceImpl(AdminDao adminDao) {
+        this.adminDao = adminDao;
     }
 
+//
+//    @Autowired
+//    public AdminServiceImpl(AdminRepository adminRepository, AdminDao adminDao) {
+//        this.adminDao = adminDao;
+//        this.adminRepository = adminRepository;
+//    }
+
+
+    @Transactional
     @Override
     public void add(User user) {
-        adminRepository.save(user);
+        adminDao.add(user);
+        //     adminRepository.save(user);
     }
 
+    @Transactional
     @Override
     public void delete(int id) {
-        adminRepository.deleteById(id);
+        //adminRepository.deleteById(id);
     }
 
     @Override
-    // @Transactional(readOnly = true)
+    @Transactional(readOnly = true)
     public User getUser(int id) {
-        return adminRepository.getById(id);
+        return adminDao.getUser(id);
+        // return adminRepository.getById(id);
     }
 
     @Override
-    // @Transactional(readOnly = true)
+    @Transactional(readOnly = true)
     public List<User> getAllUsers() {
-        return adminRepository.findAll();
+        return adminDao.getAllUsers();
+        //return adminRepository.findAll();
     }
 
+    @Transactional
     @Override
     public void updateUser(int id, User newUser) {
-        adminRepository.saveAndFlush(newUser);
+        adminDao.updateUser(id, newUser);
+        // adminRepository.saveAndFlush(newUser);
     }
 
+    @Transactional(readOnly = true)
     @Override
-    public UserDetails loadUserByLogin(String username) {
-        User user = adminRepository.findByUsername(username);
-        return user;
+    public UserDetails loadUserByUsername(String username) {
+        return adminDao.findByUsername(username);
+//        return adminRepository.findByUsername(username);
     }
 }
 
