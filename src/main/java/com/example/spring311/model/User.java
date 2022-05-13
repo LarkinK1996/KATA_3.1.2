@@ -1,11 +1,8 @@
 package com.example.spring311.model;
 
-import lombok.Data;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
-import org.springframework.stereotype.Component;
 
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -22,7 +19,6 @@ import java.util.Set;
 
 @Table(name = "users")
 @Entity
-@Component("user")
 public class User implements UserDetails {
 
     @Id
@@ -49,8 +45,7 @@ public class User implements UserDetails {
 
     }
 
-    public User(int id ,String name, String lastName, String username, String password, Set<Role> roles) {
-        this.id = id;
+    public User(String name, String lastName, String username, String password, Set<Role> roles) {
         this.name = name;
         this.lastName = lastName;
         this.username = username;
@@ -144,5 +139,6 @@ public class User implements UserDetails {
     public boolean isEnabled() {
         return true;
     }
+
 }
 

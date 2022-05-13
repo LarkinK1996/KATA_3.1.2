@@ -12,9 +12,4 @@ public interface RoleService {
 
     void saveRole(Role role);
 
-
-
-//    void deleteRoleById(Long id);
-
-//    Role getRole(String role);
 }

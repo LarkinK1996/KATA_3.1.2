@@ -1,15 +1,17 @@
 package com.example.spring311.controller;
 
+import com.example.spring311.model.User;
 import com.example.spring311.service.AdminService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 
 import java.security.Principal;
 
 @Controller
-//@PreAuthorize("hasAuthority('USER')")
+@RequestMapping("/user")
 public class UserController {
 
     private final AdminService adminService;
@@ -19,12 +21,15 @@ public class UserController {
         this.adminService = adminService;
     }
 
-    @GetMapping("/user")
+    @GetMapping
     public String showUserInfo(Principal principal, Model model) {
 
         // почему-то это не работает
         // все перепробовал, нужна помощь
-        model.addAttribute("user", adminService.loadUserByUsername(principal.getName()));
+        User user = (User) adminService.loadUserByUsername(principal.getName());
+        model.addAttribute("user", user);
+        model.addAttribute("roles", user.getRoles());
+
         return "userInfo";
     }
 }

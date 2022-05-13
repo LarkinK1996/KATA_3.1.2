@@ -20,7 +20,6 @@ import java.util.List;
 
 @Controller
 @RequestMapping()
-//@PreAuthorize("hasAuthority('ADMIN')")
 public class AdminController {
 
     private final AdminService adminService;

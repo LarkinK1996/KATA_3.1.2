@@ -1,7 +1,6 @@
 package com.example.spring311.dao;
 
 import com.example.spring311.model.User;
-import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Repository;
 
 import javax.persistence.EntityManager;
@@ -48,7 +47,8 @@ public class AdminDaoImpl implements AdminDao {
     public User findByUsername(String username) {
 
         return entityManager.createQuery("select user from User user where user.username = :username", User.class)
-                .setParameter("username", username).getSingleResult();
+                .setParameter("username", username)
+                .getSingleResult();
     }
 
 
