@@ -31,8 +31,10 @@ public class User implements UserDetails {
     @Column(name = "lastName")
     private String lastName;
 
+    @Column()
     private String username;
 
+    @Column
     private String password;
 
     @ManyToMany(fetch = FetchType.EAGER)
@@ -105,7 +107,7 @@ public class User implements UserDetails {
 
     @Override
     public String getUsername() {
-        return name;
+        return username;
     }
 
     @Override

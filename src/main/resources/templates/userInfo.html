@@ -11,8 +11,8 @@
     <tr>
         <th>ID</th>
         <th>Name</th>
-        <th>Surname</th>
-        <th>Email</th>
+        <th>Lastname</th>
+        <th>Username</th>
     </tr>
 
     </thead>
@@ -20,8 +20,8 @@
     <tr>
         <td th:utext="${user.getId()}">id</td>
         <td th:utext="${user.getName()}">Name</td>
-        <td th:utext="${user.getLastName()()}">Surname</td>
-        <td th:utext="${user.getUsername()}">Email</td>
+        <td th:utext="${user.getLastName()}">LastName</td>
+        <td th:utext="${user.getUsername()}">Username</td>
     </tr>
     </tbody>
 </table>

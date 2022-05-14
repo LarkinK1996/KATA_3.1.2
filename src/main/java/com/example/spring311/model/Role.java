@@ -21,7 +21,6 @@ import java.util.Objects;
 
 @Table(name = "roles")
 @Entity
-@Component("role")
 public class Role implements GrantedAuthority {
 
     @Id

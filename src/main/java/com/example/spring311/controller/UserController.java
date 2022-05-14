@@ -23,9 +23,6 @@ public class UserController {
 
     @GetMapping
     public String showUserInfo(Principal principal, Model model) {
-
-        // почему-то это не работает
-        // все перепробовал, нужна помощь
         User user = (User) adminService.loadUserByUsername(principal.getName());
         model.addAttribute("user", user);
         model.addAttribute("roles", user.getRoles());

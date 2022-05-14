@@ -80,7 +80,7 @@ public class AdminController {
     @GetMapping("/myInfo")
     public String showUserInfo(Principal principal, Model model) {
         model.addAttribute("user", adminService.loadUserByUsername(principal.getName()));
-        return "user";
+        return "userInfo";
     }
 }
 

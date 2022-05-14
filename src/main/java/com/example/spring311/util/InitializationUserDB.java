@@ -46,6 +46,7 @@ public class InitializationUserDB {
         User admin = new User("Костя", "Ларькин", "123", new BCryptPasswordEncoder(8).encode("123"), userRole);
         User user = new User("Артём", "Соколов", "1234", new BCryptPasswordEncoder(8).encode("1234"), adminRole);
 
+        System.out.println(admin.toString());
         adminService.add(admin);
         adminService.add(user);
     }
